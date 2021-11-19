@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-k8s-client
+  namespace: kube-system
+  labels:
+    app: k8sclient
+spec:
+  selector:
+    matchLabels:
+      app: k8sclient
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: k8sclient
+    spec:
+      containers:
+      - name: goclient
+        #image: 192.168.49.2:5000/gok8sclient
+        image: gok8sclient
+        imagePullPolicy: Never
